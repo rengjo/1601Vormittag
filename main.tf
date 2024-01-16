@@ -25,11 +25,10 @@ resource "aws_s3_bucket" "lambda_bucket" {
   #   enabled = true
   # }
 
-  # Anstatt "acl" und "versioning" können Sie die "force_destroy" Einstellung verwenden
+  # Anstatt "acl" und "versioning" "force_destroy" Einstellung verwenden
   force_destroy = true
 }
 
-# ... Weitere Konfiguration für Lambda und API Gateway hier ...
 # Datenquelle für das Funktionsarchiv erstellen
 data "archive_file" "lambda_hello_world" {
   type        = "zip"
@@ -46,9 +45,6 @@ resource "aws_s3_object" "lambda_hello_world" {
 
   etag = filemd5(data.archive_file.lambda_hello_world.output_path)
 }
-
-
-# ... Weitere Konfiguration für Lambda und API Gateway hier ...
 
 # Lambda-Funktion erstellen
 resource "aws_lambda_function" "hello_world" {
