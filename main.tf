@@ -12,7 +12,7 @@ terraform {
 # AWS-Provider konfigurieren
 provider "aws" {
   region = "eu-central-1" # Sie können die Region entsprechend Ihren Anforderungen anpassen
-  profile = "Student-137237580984" # BITTE DEIN AWS PROFILE EINTRAGEN
+  profile = "Student-**************" # BITTE DEIN AWS PROFILE EINTRAGEN
 }
 
 # S3-Bucket für die Lambda-Funktion erstellen
