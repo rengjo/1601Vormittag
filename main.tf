@@ -11,7 +11,7 @@ terraform {
 
 # AWS-Provider konfigurieren
 provider "aws" {
-  region = "eu-central-1" # Sie können die Region entsprechend Ihren Anforderungen anpassen
+  region = "eu-central-1" # Region entsprechend Anforderungen anpassen
   profile = "Student-**************" # BITTE DEIN AWS PROFILE EINTRAGEN
 }
 
@@ -29,14 +29,14 @@ resource "aws_s3_bucket" "lambda_bucket" {
   force_destroy = true
 }
 
-# Datenquelle für das Funktionsarchiv erstellen
+# Datenquelle für Funktionsarchiv erstellen
 data "archive_file" "lambda_hello_world" {
   type        = "zip"
   source_dir  = "${path.module}/hello-world"
   output_path = "${path.module}/hello-world.zip"
 }
 
-# S3-Objekt für das Funktionsarchiv erstellen
+# S3-Objekt für Funktionsarchiv erstellen
 resource "aws_s3_object" "lambda_hello_world" {
   bucket = aws_s3_bucket.lambda_bucket.id
 
